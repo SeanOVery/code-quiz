@@ -38,4 +38,28 @@ body {
 
 .btn {
     background-color: var(--btn-color);
+    border: 3px solid var(--btn-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1.3rem;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+#start-btn, #next-btn {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
 }
