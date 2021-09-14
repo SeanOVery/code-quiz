@@ -5,7 +5,7 @@ const startBtn = document.querySelector('#start-btn'),
       answerBtnsEl = document.querySelector('#answer-btns');
 let   questions = [
           {
-            question: `console.log(typeof '22') will log what in the console?`,
+            question: `console.log(typeof \u00A0 22) will log what in the console?`,
             answers: [
                 {answer: 'number', correct: true},
                 {answer: 'string', correct: false},
@@ -14,14 +14,50 @@ let   questions = [
               ]
           }, 
           {
-            question: `console.log(typeof 'cat') will log what in the console?`,
+            question: `console.log(typeof \u00A0 '22') will log what in the console?`,
             answers: [
                 {answer: 'number', correct: false},
                 {answer: 'string', correct: true},
                 {answer: 'boolean', correct: false},
                 {answer: 'undefined', correct: false}
               ]
-          }
+          },
+          {
+            question: `console.log(typeof \u00A0 true) will log what in the console?`,
+            answers: [
+                {answer: 'number', correct: false},
+                {answer: 'string', correct: false},
+                {answer: 'boolean', correct: true},
+                {answer: 'undefined', correct: false}
+              ]
+          }, 
+          {
+            question: `Which selector is more generalized?`,
+            answers: [
+                {answer: 'querySelector', correct: true},
+                {answer: 'getElementById', correct: false},
+                {answer: 'getElementByClassName', correct: false},
+                {answer: `They're the same`, correct: false}
+              ]
+          }, 
+          {
+            question: `What is another name for event bubbling?`,
+            answers: [
+                {answer: 'Event Popping', correct: false},
+                {answer: 'Event Stringing', correct: false},
+                {answer: 'Event Propagation', correct: true},
+                {answer: 'Event Delegation', correct: false}
+              ]
+          }, 
+          {
+            question: `Which of these is not an event addEventListener can listen for?`,
+            answers: [
+                {answer: 'click', correct: false},
+                {answer: 'keydown', correct: false},
+                {answer: 'mouseover', correct: false},
+                {answer: 'hover', correct: true}
+              ]
+          } 
       ],
       questionsIndex;
 function startQuiz() {
