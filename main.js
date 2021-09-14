@@ -1,6 +1,8 @@
 const startBtn = document.querySelector('#start-btn'),
       questionContainerEl = document.querySelector('#question-container'),
-      nextBtn = document.querySelector('#next-btn');
+      questionEl = document.querySelector('#question'),
+      nextBtn = document.querySelector('#next-btn'),
+      answerBtnsEl = document.querySelector('#answer-btns'),
       questions = [
           {
               question: `console.log(typeof '22') will log what in the console?`,
@@ -20,10 +22,11 @@ function startQuiz() {
     nextBtn.classList.remove('hide');
     shuffleQuestions = randomArray(questions);
     QuestionsIndex = 0
+    nextQuestion();
 }
 
 function nextQuestion() {
-
+    showQs(questions[QuestionsIndex]);
 }
 
 function randomArray(array) {
@@ -35,6 +38,14 @@ function randomArray(array) {
     }
 }
 
+function showQs(q) {
+    questionEl.textContent = q.question;
+    q.answers.forEach(a => {
+        const button = document.createElement('button');
+        button.textContent = a.text;
+        button.classList.add('btn');
+    })
+}
 
 startBtn.addEventListener('click', startQuiz);
 
