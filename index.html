@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer src="./main.js"></script>
+    <title>Code Quiz!</title>
 </head>
 <body>
-    
+    <main class="quiz-container">
+        <div class="question-container">
+            <div id="question">question</div>
+            <div id="answer-btns" class="btn-layout">
+                <button class="btn">answer 1</button>
+                <button class="btn">answer 2</button>
+                <button class="btn">answer 3</button>
+                <button class="btn">answer 4</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="btn">Start</button>
+            <button id="next-btn" class="btn">Next</button>
+        </div>
+    </main>
 </body>
 </html>

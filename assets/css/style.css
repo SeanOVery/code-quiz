@@ -1,0 +1,41 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+
+:root {
+    --bg-color: rgba(45, 45, 45, 1);
+    --btn-color: rgba(45, 45, 45, 0.5)
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+
+.quiz-container {
+    width: 700px;
+    max-width: 80%;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-layout {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn {
+    background-color: var(--btn-color);
+}
