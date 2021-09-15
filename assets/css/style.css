@@ -72,3 +72,20 @@ body {
 .hide {
     display: none;
 }
+
+.correct {
+    background-color: green;
+}
+
+.wrong {
+    background-color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .btn-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+}

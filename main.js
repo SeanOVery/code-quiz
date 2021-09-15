@@ -5,7 +5,7 @@ const startBtn = document.querySelector('#start-btn'),
       answerBtnsEl = document.querySelector('#answer-btns');
 let   questions = [
           {
-            question: `console.log(typeof \u00A0 22) will log what in the console?`,
+            question: `console.log(typeof\u00A0 22) will log what in the console?`,
             answers: [
                 {answer: 'number', correct: true},
                 {answer: 'string', correct: false},
@@ -14,7 +14,7 @@ let   questions = [
               ]
           }, 
           {
-            question: `console.log(typeof \u00A0 '22') will log what in the console?`,
+            question: `console.log(typeof\u00A0 '22') will log what in the console?`,
             answers: [
                 {answer: 'number', correct: false},
                 {answer: 'string', correct: true},
@@ -23,7 +23,7 @@ let   questions = [
               ]
           },
           {
-            question: `console.log(typeof \u00A0 true) will log what in the console?`,
+            question: `console.log(typeof\u00A0 true) will log what in the console?`,
             answers: [
                 {answer: 'number', correct: false},
                 {answer: 'string', correct: false},
@@ -59,6 +59,10 @@ let   questions = [
               ]
           } 
       ],
+      score = {
+          correct: 0,
+          incorrect: 0
+      },
       questionsIndex;
 function startQuiz() {
     startBtn.classList.add('hide');
@@ -115,7 +119,6 @@ function answerChoice(ev) {
     ev.preventDefault();
     const selection = ev.target
     const correct = selection.dataset.correct
-    setStatus(document.body, correct)
     Array.from(answerBtnsEl.children).forEach(b => {
         setStatus(b, b.dataset.correct)
     })
