@@ -35,7 +35,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px
+    padding: 20px
 }
 
 .btn-layout {
@@ -73,12 +73,16 @@ body {
     display: none;
 }
 
-.correct {
-    background-color: green;
+#score-timer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 5px solid black;
 }
 
-.wrong {
-    background-color: red;
+.score, .timer {
+    padding: 10px 10px;
+    font-size: 1.5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -87,5 +91,7 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
     }
-    
+    #score-timer-container {
+        flex-direction: column;
+    }
 }

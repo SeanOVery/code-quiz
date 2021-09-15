@@ -2,7 +2,10 @@ const startBtn = document.querySelector('#start-btn'),
       questionContainerEl = document.querySelector('#question-container'),
       questionEl = document.querySelector('#question'),
       nextBtn = document.querySelector('#next-btn'),
-      answerBtnsEl = document.querySelector('#answer-btns');
+      answerBtnsEl = document.querySelector('#answer-btns'),
+      scoreEl = document.querySelector('#score'),
+      timerEl = document.querySelector('#timer'),
+      restartBtn = document.querySelector('#restart-btn');
 let   questions = [
           {
             question: `console.log(typeof\u00A0 22) will log what in the console?`,
@@ -61,11 +64,12 @@ let   questions = [
       ],
       score = {
           correct: 0,
-          incorrect: 0
+          wrong: 0
       },
       questionsIndex;
 function startQuiz() {
     startBtn.classList.add('hide');
+    restartBtn.classList.add('hide');
     questionContainerEl.classList.remove('hide');
     nextBtn.classList.remove('hide');
     randomArray(questions);
@@ -101,32 +105,24 @@ function showQs(q) {
     })
 }
 
-function setStatus(el, correct) {
-    clearStatus(el);
-    if(correct) {
-        el.classList.add('correct');
-    } else {
-        el.classList.add('wrong');
-    }
-}
-
-function clearStatus(el) {
-    el.classList.remove('correct');
-    el.classList.remove('wrong');
-}
 
 function answerChoice(ev) {
     ev.preventDefault();
     const selection = ev.target
     const correct = selection.dataset.correct
-    Array.from(answerBtnsEl.children).forEach(b => {
-        setStatus(b, b.dataset.correct)
-    })
+    if(correct) {
+        score.correct++;
+        scoreEl.innerText = `Correct: ${score.correct}
+        Incorrect: ${score.wrong}`;
+    } else {
+        score.wrong++;
+        scoreEl.innerText = `Correct: ${score.correct} 
+        Incorrect: ${score.wrong}`;
+    }
     if(questions.length > questionsIndex + 1) {
         nextBtn.classList.remove('hide');
     } else {
-        startBtn.textContent = 'Restart'
-        startBtn.classList.remove('hide');
+        restartBtn.classList.remove('hide');
     }
 
 }
@@ -142,4 +138,11 @@ startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', function() {
     questionsIndex++
     nextQuestion();
+})
+restartBtn.addEventListener('click', function() {
+    score.correct = 0;
+    score.wrong = 0;
+    scoreEl.innerText = `Correct: ${score.correct}
+    Incorrect: ${score.wrong}`;
+    startQuiz();
 })

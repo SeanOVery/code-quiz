@@ -11,6 +11,14 @@
 </head>
 <body>
     <main class="quiz-container">
+        <div id="score-timer-container">
+            <div id="score" class="score">
+                Correct: 0
+                <br>
+                Incorrect: 0
+            </div>
+            <div id="timer" class="timer">timer</div>
+        </div>
         <div id="question-container" class="question-container hide">
             <div id="question">question</div>
             <div id="answer-btns" class="btn-layout">
@@ -23,6 +31,8 @@
         <div class="controls">
             <button id="start-btn" class="btn">Start</button>
             <button id="next-btn" class="btn hide">Next</button>
+            <button id="restart-btn" class="btn hide">Restart</button>
+            <button id="save-score-btn" class="btn hide">Save Score</button>
         </div>
     </main>
 </body>
