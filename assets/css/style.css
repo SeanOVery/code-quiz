@@ -86,6 +86,41 @@ body {
     font-size: 1.5rem;
 }
 
+#save-score-container {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#save-score-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.save-score-label {
+    margin: 10px;
+}
+
+#save-score-text {
+    width: 40%;
+    border: 2px solid;
+    text-align: center;
+}
+
+#save-score-text:hover {
+    border: 3px solid rgba(30, 30, 30, 0.5);
+    border-radius: 5px;
+}
+
+#save-score-text:focus {
+    background-color: rgba(30, 30, 30, 0.5);
+    color: white;
+}
+
 @media screen and (max-width: 768px) {
     .btn-layout {
         display: flex;

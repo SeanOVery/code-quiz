@@ -6,7 +6,9 @@ const startBtn = document.querySelector('#start-btn'),
       scoreEl = document.querySelector('#score'),
       timerEl = document.querySelector('#timer'),
       restartBtn = document.querySelector('#restart-btn'),
-      saveScoreBtn = document.querySelector('#save-score-btn');
+      saveScoreBtn = document.querySelector('#save-score-btn'),
+      saveScoreContainer = document.querySelector('#save-score-container'),
+      saveScoreForm = document.querySelector('#save-score-form');
 let   questions = [
           {
             question: `console.log(typeof\u00A0 22) will log what in the console?`,
@@ -136,7 +138,7 @@ function answerChoice(ev) {
     ev.preventDefault();
     const selection = ev.target
     const correct = selection.dataset.correct
-    if(correct) {
+    if (correct) {
         score.correct++;
         questionsAnswered++;
         scoreEl.innerText = `Correct: ${score.correct}
@@ -147,7 +149,7 @@ function answerChoice(ev) {
         scoreEl.innerText = `Correct: ${score.correct} 
         Incorrect: ${score.wrong}`;
     }
-    if(questions.length > questionsIndex + 1) {
+    if (questions.length > questionsIndex + 1) {
         nextBtn.classList.remove('hide');
     } else {
         restartBtn.classList.remove('hide');
@@ -157,7 +159,7 @@ function answerChoice(ev) {
 
 function reset() {
     nextBtn.classList.add('hide');
-    while(answerBtnsEl.firstChild) {
+    while (answerBtnsEl.firstChild) {
         answerBtnsEl.removeChild(answerBtnsEl.firstChild)
     }
 }
@@ -172,4 +174,9 @@ restartBtn.addEventListener('click', function() {
     scoreEl.innerText = `Correct: ${score.correct}
     Incorrect: ${score.wrong}`;
     startQuiz();
+})
+saveScoreBtn.addEventListener('click', function() {
+    saveScoreContainer.classList.remove('hide');
+    s    
+    // localStorage.setItem('score', JSON.stringify(score));
 })
