@@ -58,9 +58,10 @@ body {
     border-color: black;
 }
 
-#start-btn, #next-btn {
+#start-btn, #next-btn, #restart-btn, #save-score-btn {
     font-size: 1.5rem;
     padding: 10px 20px;
+    margin: 10px 10px 0 10px;
 }
 
 .controls {

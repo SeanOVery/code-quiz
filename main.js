@@ -5,7 +5,8 @@ const startBtn = document.querySelector('#start-btn'),
       answerBtnsEl = document.querySelector('#answer-btns'),
       scoreEl = document.querySelector('#score'),
       timerEl = document.querySelector('#timer'),
-      restartBtn = document.querySelector('#restart-btn');
+      restartBtn = document.querySelector('#restart-btn'),
+      saveScoreBtn = document.querySelector('#save-score-btn');
 let   questions = [
           {
             question: `console.log(typeof\u00A0 22) will log what in the console?`,
@@ -66,7 +67,8 @@ let   questions = [
           correct: 0,
           wrong: 0
       },
-      questionsIndex;
+      questionsIndex,
+      questionsAnswered = 0;
 function startQuiz() {
     startBtn.classList.add('hide');
     restartBtn.classList.add('hide');
@@ -75,6 +77,30 @@ function startQuiz() {
     randomArray(questions);
     questionsIndex = 0;
     nextQuestion();
+    timer();
+}
+
+function timer() {
+    let timeLeft = 60;
+    let timeInterval = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = `${timeLeft} Seconds Left`;
+        if (timeLeft >= 0) {
+            if (questionsAnswered === questions.length) {
+                clearInterval(timeInterval);
+                timerEl.textContent = `All Questions Answered!`
+                saveScoreBtn.classList.remove('hide');
+                restartBtn.classList.remove('hide');
+                questionContainerEl.classList.add('hide');
+            }
+        } else if (timeLeft < 0) {
+            clearInterval(timeInterval);
+            timerEl.textContent = `Time's up!`;
+            saveScoreBtn.classList.remove('hide');
+            restartBtn.classList.remove('hide');
+            questionContainerEl.classList.add('hide');
+        }
+    }, 1000)
 }
 
 function nextQuestion() {
@@ -112,10 +138,12 @@ function answerChoice(ev) {
     const correct = selection.dataset.correct
     if(correct) {
         score.correct++;
+        questionsAnswered++;
         scoreEl.innerText = `Correct: ${score.correct}
         Incorrect: ${score.wrong}`;
     } else {
         score.wrong++;
+        questionsAnswered++;
         scoreEl.innerText = `Correct: ${score.correct} 
         Incorrect: ${score.wrong}`;
     }
@@ -130,8 +158,7 @@ function answerChoice(ev) {
 function reset() {
     nextBtn.classList.add('hide');
     while(answerBtnsEl.firstChild) {
-        answerBtnsEl.removeChild
-        (answerBtnsEl.firstChild)
+        answerBtnsEl.removeChild(answerBtnsEl.firstChild)
     }
 }
 startBtn.addEventListener('click', startQuiz);
