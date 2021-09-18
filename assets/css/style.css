@@ -20,7 +20,7 @@ body {
     background-color: var(--bg-color);
 }
 
-.quiz-container {
+.quiz-container, .highscore-container {
     width: 700px;
     max-width: 80%;
     background-color: white;
@@ -29,6 +29,19 @@ body {
     box-shadow: 0 0 10px 2px;
 }
 
+.highscore-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.link-btn-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
 
 #question {
     font-size: 1.5rem;

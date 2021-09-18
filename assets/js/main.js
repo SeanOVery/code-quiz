@@ -68,10 +68,20 @@ let   questions = [
       ],
       score = {
           correct: 0,
-          wrong: 0
+          wrong: 0,
+          points: 0
       },
       questionsIndex,
-      questionsAnswered = 0;
+      questionsAnswered = 0,
+      localInitials = [];
+
+function init() {
+    let storedInitials = JSON.parse(localStorage.getItem('names'));
+    if (storedInitials !== null) {
+        localInitials = storedInitials;
+    }
+}
+
 function startQuiz() {
     startBtn.classList.add('hide');
     restartBtn.classList.add('hide');
@@ -141,16 +151,21 @@ function answerChoice(ev) {
     const correct = selection.dataset.correct
     if (correct) {
         score.correct++;
+        score.points += 10;
         questionsAnswered++;
         scoreEl.innerText = `Correct: ${score.correct}
-        Incorrect: ${score.wrong}`;
+        Incorrect: ${score.wrong}
+        Points: ${score.points}`;
     } else {
         score.wrong++;
+        score.points -= 5;
         questionsAnswered++;
         scoreEl.innerText = `Correct: ${score.correct} 
-        Incorrect: ${score.wrong}`;
+        Incorrect: ${score.wrong}
+        Points: ${score.points}`;
     }
     if (questions.length > questionsIndex + 1) {
+        questionContainerEl.classList.add('hide')
         nextBtn.classList.remove('hide');
     } else {
         restartBtn.classList.remove('hide');
@@ -167,6 +182,7 @@ function reset() {
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', function() {
     questionsIndex++
+    questionContainerEl.classList.remove('hide')
     nextQuestion();
 })
 restartBtn.addEventListener('click', function() {
@@ -181,6 +197,10 @@ saveScoreBtn.addEventListener('click', function() {
     saveScoreForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
         let userName = saveScoreInput.value.trim();
-        localStorage.setItem(`${userName}`, JSON.stringify(score));
+        localInitials.push(userName);
+        localStorage.setItem('names', JSON.stringify(localInitials))
+        localStorage.setItem(`${userName}`, score.points);
+        location.href = 'highscores.html'
     })
 })
+init();
