@@ -70,9 +70,7 @@ body {
     align-items: center;
 }
 
-.hide {
-    display: none;
-}
+
 
 #score-timer-container {
     display: flex;
@@ -119,6 +117,10 @@ body {
 #save-score-text:focus {
     background-color: rgba(30, 30, 30, 0.5);
     color: white;
+}
+
+.hide {
+    display: none !important; 
 }
 
 @media screen and (max-width: 768px) {

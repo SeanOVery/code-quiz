@@ -8,7 +8,8 @@ const startBtn = document.querySelector('#start-btn'),
       restartBtn = document.querySelector('#restart-btn'),
       saveScoreBtn = document.querySelector('#save-score-btn'),
       saveScoreContainer = document.querySelector('#save-score-container'),
-      saveScoreForm = document.querySelector('#save-score-form');
+      saveScoreForm = document.querySelector('#save-score-form'),
+      saveScoreInput = document.querySelector('#save-score-text');
 let   questions = [
           {
             question: `console.log(typeof\u00A0 22) will log what in the console?`,
@@ -177,6 +178,9 @@ restartBtn.addEventListener('click', function() {
 })
 saveScoreBtn.addEventListener('click', function() {
     saveScoreContainer.classList.remove('hide');
-    s    
-    // localStorage.setItem('score', JSON.stringify(score));
+    saveScoreForm.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        let userName = saveScoreInput.value.trim();
+        localStorage.setItem(`${userName}`, JSON.stringify(score));
+    })
 })
