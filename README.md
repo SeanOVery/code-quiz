@@ -22,7 +22,7 @@ The goal of this project was to create a web based quiz with questions focusing 
 
 ## Live Site
 
-Link to the live site [here.](https://seanovery.github.io/password-generator/)
+Link to the live site [here.](https://seanovery.github.io/code-quiz/)
 
 ---
 
