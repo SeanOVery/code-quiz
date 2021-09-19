@@ -73,7 +73,8 @@ let   questions = [
       },
       questionsIndex,
       questionsAnswered = 0,
-      initialsArray = [];
+      initialsArray = [],
+      timeCheck = score.wrong;
 
 function init() {
     let storedInitials = JSON.parse(localStorage.getItem('names'));
@@ -98,6 +99,10 @@ function timer() {
     let timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = `${timeLeft} Seconds Left`;
+        if (timeCheck !== score.wrong) {
+            timeLeft -= 10;
+            timeCheck = score.wrong;
+        }
         if (timeLeft >= 0) {
             if (questionsAnswered === questions.length) {
                 clearInterval(timeInterval);
