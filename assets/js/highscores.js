@@ -32,8 +32,6 @@ function displayScores() {
         let li = document.createElement("li");
         li.textContent = `${name}: ${score} points`;
         highscoreList.appendChild(li);
-        console.log(name)
-        console.log(score)
     }
 }
 
