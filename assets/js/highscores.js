@@ -3,25 +3,38 @@ let   initialsArray = [],
       scoresObj = {},
       scoresSortable = [],
       sortedScoreNamesArray = [],
-      sortedScoresArray = []
+      sortedScoresArray = [];
 
 function init() {
     let storedInitials = JSON.parse(localStorage.getItem('names'))
     if (storedInitials !== null) {
         initialsArray = storedInitials
     }
-    parseSortDisplayScores();
+    parseSortScores();
+    displayScores();
 }
 
-function parseSortDisplayScores() {
+function parseSortScores() {
     for (i = 0; i < initialsArray.length; i++) {
         if (JSON.parse(localStorage.getItem(initialsArray[i])) !== null ) {
             scoresObj[initialsArray[i]] = JSON.parse(localStorage.getItem(initialsArray[i]));
         }
     }
-    scoresSortable = Object.fromEntries(Object.entries(scoresObj).sort(([,a],[,b]) => b-a))
+    scoresSortable = Object.fromEntries(Object.entries(scoresObj).sort(([,a],[,b]) => b-a));
     sortedScoreNamesArray = Object.keys(scoresSortable);
-    sortedScoresArray = Object.values(scoresSortable)
+    sortedScoresArray = Object.values(scoresSortable);
+}
+
+function displayScores() {
+    for (i = 0; i < sortedScoreNamesArray.length; i++) {
+        let name = sortedScoreNamesArray[i];
+        let score = sortedScoresArray[i];
+        let li = document.createElement("li");
+        li.textContent = `${name}: ${score} points`;
+        highscoreList.appendChild(li);
+        console.log(name)
+        console.log(score)
+    }
 }
 
 init();

@@ -144,7 +144,6 @@ function showQs(q) {
     })
 }
 
-
 function answerChoice(ev) {
     ev.preventDefault();
     const selection = ev.target
@@ -179,12 +178,15 @@ function reset() {
         answerBtnsEl.removeChild(answerBtnsEl.firstChild)
     }
 }
+
 startBtn.addEventListener('click', startQuiz);
+
 nextBtn.addEventListener('click', function() {
     questionsIndex++
     questionContainerEl.classList.remove('hide')
     nextQuestion();
 })
+
 restartBtn.addEventListener('click', function() {
     score.correct = 0;
     score.wrong = 0;
@@ -192,6 +194,7 @@ restartBtn.addEventListener('click', function() {
     Incorrect: ${score.wrong}`;
     startQuiz();
 })
+
 saveScoreBtn.addEventListener('click', function() {
     saveScoreContainer.classList.remove('hide');
     saveScoreForm.addEventListener('submit', function(ev) {
