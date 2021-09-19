@@ -73,12 +73,12 @@ let   questions = [
       },
       questionsIndex,
       questionsAnswered = 0,
-      localInitials = [];
+      initialsArray = [];
 
 function init() {
     let storedInitials = JSON.parse(localStorage.getItem('names'));
     if (storedInitials !== null) {
-        localInitials = storedInitials;
+        initialsArray = storedInitials;
     }
 }
 
@@ -197,8 +197,8 @@ saveScoreBtn.addEventListener('click', function() {
     saveScoreForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
         let userName = saveScoreInput.value.trim();
-        localInitials.push(userName);
-        localStorage.setItem('names', JSON.stringify(localInitials))
+        initialsArray.push(userName);
+        localStorage.setItem('names', JSON.stringify(initialsArray))
         localStorage.setItem(`${userName}`, score.points);
         location.href = 'highscores.html'
     })
