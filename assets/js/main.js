@@ -211,4 +211,5 @@ saveScoreBtn.addEventListener('click', function() {
         location.href = 'highscores.html'
     })
 })
+
 init();
