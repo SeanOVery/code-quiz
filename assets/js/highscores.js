@@ -1,7 +1,7 @@
 const highscoreList = document.querySelector('#highscore-list');
 let   initialsArray = [],
       scoresObj = {},
-      scoresSortable = [],
+      scoresSortedObj = [],
       sortedScoreNamesArray = [],
       sortedScoresArray = [];
     // global variable declaration for highscores page
@@ -20,9 +20,9 @@ function parseSortScores() {
             scoresObj[initialsArray[i]] = JSON.parse(localStorage.getItem(initialsArray[i]));
         }
     }
-    scoresSortable = Object.fromEntries(Object.entries(scoresObj).sort(([,a],[,b]) => b-a));
-    sortedScoreNamesArray = Object.keys(scoresSortable);
-    sortedScoresArray = Object.values(scoresSortable);
+    scoresSortedObj = Object.fromEntries(Object.entries(scoresObj).sort((a, b) => b[1] - a[1]));
+    sortedScoreNamesArray = Object.keys(scoresSortedObj);
+    sortedScoresArray = Object.values(scoresSortedObj);
 } // Function to take in info from local storage and put it in a usable form. Checks localstorage for only high scores by comparing to names in initialArray then stores all scores in an object. Object pairs sorted by value and stored in two sorted arrays where name and score will have matching indices.
 
 function displayScores() {
