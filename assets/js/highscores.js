@@ -1,9 +1,7 @@
 const highscoreList = document.querySelector('#highscore-list');
 let   initialsArray = [],
       scoresObj = {},
-      scoresSortedObj = [],
-      sortedScoreNamesArray = [],
-      sortedScoresArray = [];
+      sortedScoreArr = [];
     // global variable declaration for highscores page
 function init() {
     let storedInitials = JSON.parse(localStorage.getItem('names'))
@@ -20,15 +18,13 @@ function parseSortScores() {
             scoresObj[initialsArray[i]] = JSON.parse(localStorage.getItem(initialsArray[i]));
         }
     }
-    scoresSortedObj = Object.fromEntries(Object.entries(scoresObj).sort((a, b) => b[1] - a[1]));
-    sortedScoreNamesArray = Object.keys(scoresSortedObj);
-    sortedScoresArray = Object.values(scoresSortedObj);
-} // Function to take in info from local storage and put it in a usable form. Checks localstorage for only high scores by comparing to names in initialArray then stores all scores in an object. Object pairs sorted by value and stored in two sorted arrays where name and score will have matching indices.
+    sortedScoreArr = Object.entries(scoresObj).sort((a, b) => b[1] - a[1]);
+} // Function to pull names and scores from local storage and store them in an array and sort them.
 
 function displayScores() {
-    for (i = 0; i < sortedScoreNamesArray.length; i++) {
-        let name = sortedScoreNamesArray[i];
-        let score = sortedScoresArray[i];
+    for (i = 0; i < sortedScoreArr.length; i++) {
+        let name = sortedScoreArr[i][0]
+        let score = sortedScoreArr[i][1]
         let li = document.createElement("li");
         li.textContent = `${name}: ${score} points`;
         highscoreList.appendChild(li);
